@@ -1,17 +1,14 @@
 const express = require('express')
-const app = express()
+const postsController = require ('.controllers/posts');
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = process.env.PORT || 3000;
+const app = express()
 
-app.get('/', (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World :)');
+app.use (express.static('no-framework'));
+app.use('/v1/posts/', postsController);
+
+app.listen(port, ()=>{
+  console.log('Server running at http://${hostname}:${port}/')
 })
-
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-  console.log('Server still running at http://'+ hostname +':'+port+'/');
-});
 
