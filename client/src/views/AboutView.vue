@@ -38,11 +38,13 @@ import { reactive } from 'vue';
           <td>{{item.name}}</td>
           <td>${{item.cost}}</td>
           <td><input v-model="item.qty" /></td>
-          <td>${{item.cost * items.qty}}</td>
+          <td>${{item.cost * item.qty}}</td>
       </tr>
       <tr>
           <td colspan="3">Total</td>
-          <td>${{cart.reduced((total,item)=> total+item.cost*item.qty, 0)}}</td>
+        <td>
+          ${{ cart.reduce((total, item) => total + item.cost * item.qty, 0) }}
+        </td>
       </tr>
     </table>
   </div>
