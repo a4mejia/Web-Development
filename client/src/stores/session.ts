@@ -6,7 +6,7 @@ const session = reactive ({
  
 export function login(firstName: string, lastName: string) {
   session.user = {
-    fistName,
+    firstName,
     lastName,
 };
 
@@ -15,7 +15,7 @@ export function logout(){
     session.user=null;
 }
 export class User{
-    public fistName?: string;
+    public firstName?: string;
     public lastName?: string;
 }
 export default session;

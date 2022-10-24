@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import {RouterLink} from 'vue-router';
-import LoginBadge from './LoginBadge.vue';
+import LoginBadge from '../LoginBadge.vue';
 
 let isActive = ref(false);
 </script>
@@ -27,8 +27,8 @@ let isActive = ref(false);
         <router-link to="/" class="navbar-item" >
           Home
         </router-link>
-        <router-link class="navbar-item" to="/store"  >
-          Store
+        <router-link class="navbar-item" to="/products"  >
+          Product
         </router-link>
        
         <div class="navbar-item has-dropdown is-hoverable">
