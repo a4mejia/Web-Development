@@ -7,6 +7,7 @@ import { getProducts } from "../stores/products";
 const products = reactive(getProducts());
 const search = ref("");
 const results = computed(()=> products.filter((product)=> product.title.toLowerCase().includes(search.value.toLocaleLowerCase())))
+
 </script>
 
 <template>

@@ -2,12 +2,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import {RouterLink} from 'vue-router';
+import Cart from "../Cart.vue";
 import LoginBadge from '../LoginBadge.vue';
 
 let isActive = ref(false);
 </script>
 
 <template>
+  <cart />
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="container">
     <div class="navbar-brand">
