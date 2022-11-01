@@ -1,13 +1,14 @@
 <script setup lang="ts">
-
+import {addProductToCart} from "@/stores/cart";
 import {computed, reactive, ref} from "vue";
 import { RouterLink } from "vue-router";
-import { getProducts } from "../stores/products";
+import { getProducts, type} from "../stores/products";
 
 const products = reactive(getProducts());
 const search = ref("");
-const results = computed(()=> products.filter((product)=> product.title.toLowerCase().includes(search.value.toLocaleLowerCase())))
-
+function addToCart(product: Product){
+    addProductToCart(product)
+}
 </script>
 
 <template>
