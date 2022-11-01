@@ -1,34 +1,45 @@
 <script setup lang="ts">
 import {ref } from 'vue';
-const {isOpen}= defineProps(
-    
-)
+const { isOpen } = defineProps<{
+    isOpen:boolean;
+}>();
 </script>
+
 <template>
     <div class="fly-out" :class="{'is-open': !isOpen}">
-        <div class="fly-out-body"></div>
-    <slot name="header"></slot>
-        
+        <div class="fly-out-body">
+            <div class="fly-out-header">
+                <slot name="header" />
+            </div>
+            <slot />
+        </div>
     </div>
 </template>
+
 <style scoped>
 .fly-out{
-    position: flex;
+    position: fixed;
     top: 0;
-    right: 20;
+    right: -20em;
     bottom: 0;
     width: 20em;
     background-color: rgb(255, 225, 220);
-    border-left: 1px solid 000;
+    border-left: 1px solid #000;
     z-index: 100;
+
     transition: right 0.5s ease-in-out ;
 }
 .fly-out.is-open{
     right: 0;
 }
 .fly-out-body{
-    height: 100;
+    height: 100%;
     background-color: aliceblue;
     margin: .5em;
+    padding: 1em;
+}
+.fly-out-header{
+    padding: 1em;
+    background-color: antiquewhite;
 }
 </style>

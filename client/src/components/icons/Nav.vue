@@ -5,11 +5,13 @@ import {RouterLink} from 'vue-router';
 import Cart from "../Cart.vue";
 import LoginBadge from '../LoginBadge.vue';
 
-let isActive = ref(false);
+const isActive = ref(false);
+const isCartOpen = (false);
+
 </script>
 
 <template>
-  <cart />
+  <Cart :is-open="isCartOpen" />
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="container">
     <div class="navbar-brand">
@@ -60,8 +62,14 @@ let isActive = ref(false);
   
       <div class="navbar-end">
         <div class="navbar-item">
+          <button class="button-is-primary" @click="isCartOpen =! isCartOpen">
+              <strong>Cart</strong>
+          </button>
+        </div>
+        <div class="navbar-item">          
           <login-badge></login-badge>
         </div>
+        
       </div>
     </div>
     </div>
