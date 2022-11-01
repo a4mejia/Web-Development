@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {ref } from 'vue';
-const {isOpen}= defineProps<(
+const {isOpen}= defineProps(
     
-)>
+)
 </script>
 <template>
     <div class="fly-out" :class="{'is-open': !isOpen}">

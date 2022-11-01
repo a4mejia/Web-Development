@@ -1,12 +1,15 @@
 const express = require('express')
-const postsController = require ('.controllers/posts');
-
+const app = express()
+const productsController = require ('./controllers/products')
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
-const app = express()
 
-app.use (express.static('no-framework'));
-app.use('/v1/posts/', postsController);
+app
+  .get('/',(req,res)=>{
+    res.status(200).send('hello');
+  })
+  
+  .use ('/api/v1/products', productsController);
 
 app.listen(port, ()=>{
   console.log('Server running at http://${hostname}:${port}/')

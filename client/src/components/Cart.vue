@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import FlyoutPanel from './FlyoutPanel.vue';
 function closeCart(){
 
 }
@@ -15,8 +15,13 @@ function checkout(){
     </div>
     <div class="fly-out-body">
         <div v-if="!cart">
-        <p>Your cart is empty</p>
-    </div>
+            <p>Your cart is empty</p>
+        </div>
+        <div x-else>
+            <div v-for="item in csrt" >
+
+            </div>
+        </div>
     </div>
     </div>
 </template>
