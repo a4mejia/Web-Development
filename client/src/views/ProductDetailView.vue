@@ -11,9 +11,7 @@ const product = ref(getProduct(+route.params.id));
 <template>
     
           <div v-if="product" class="section">
-            <div class="product-image">
-                <img src="product.thumbnail" :alt="product.title">
-            </div>
+          
               <div class="product-info">
                   <h3 class="title">{{product.title}}</h3>
                   <p>{{product.description}}</p>

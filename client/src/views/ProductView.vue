@@ -1,11 +1,13 @@
 <script setup lang="ts">
+
 import {addProductToCart} from "@/stores/cart";
-import {computed, reactive, ref} from "vue";
+import {computed, reactive, ref, watch} from "vue";
 import { RouterLink } from "vue-router";
-import { getProducts, type} from "../stores/products";
+import { getProducts, type Product} from "../stores/products";
 
 const products = reactive(getProducts());
 const search = ref("");
+
 function addToCart(product: Product){
     addProductToCart(product)
 }
@@ -18,14 +20,13 @@ function addToCart(product: Product){
         </div>
 
         <div class="products">
-            <RouterLink class="product" v-for =" product in products" :key="product.id" :to="`/product/${product.id}`">
-              <div class="product-image">
-                 <img src="product.thumbnail" :alt="product.title">
-              </div>
+            <RouterLink class="product" v-for = " product in products" :key="product.id" :to="`/product/${product.id}`" v-show = "product.title.toLowerCase().includes(search.toLowerCase())">
+             
               
               <div class="product-info">
                   <b>{{product.title}}</b>
                   <p>{{product.description}}</p>
+                  <button class="button is-small is-primary is-rounded add" @click.prevent="addToCart(product)">+</button>
                   <p class="price">
                     <span class="currency">$</span>
                     <span class="amount">{{product.price}}</span>
