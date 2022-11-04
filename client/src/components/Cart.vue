@@ -9,7 +9,7 @@ const { isOpen } = defineProps<{
 }>();
 
 function closeCart(){
-
+    //isActive=false
 }
 function checkout(){
 
@@ -22,8 +22,9 @@ const subtotal = computed(()=> cart.reduce((total, item)=> total + item.quantity
 
 <FlyoutPanel :is-open="isOpen">
     <template #header>
-        <h3 class="title is-3">Cart
-            <small class="subtitle-is6">({{cart.length}}items)</small>
+        <h3 class="title is-3">
+            Cart
+            <small class="subtitle is-6">({{cart.length}}items)</small>
         </h3>
         <h4 class="subtitle is-6">
             <b>subtotal:</b>${{subtotal}}
@@ -41,7 +42,7 @@ const subtotal = computed(()=> cart.reduce((total, item)=> total + item.quantity
                     </figure>
 
                     <div class="">
-                        <b>{{item.product.price}}</b>
+                        <b>{{item.product.title}}</b>
                         <div class="price">${{item.product.price}}</div>
                         <div>
                             x
@@ -49,7 +50,7 @@ const subtotal = computed(()=> cart.reduce((total, item)=> total + item.quantity
                             <option value="0"> 0(delete)</option>
                             <option v-for="n in 10" :key="n" :value="n">{{n}}</option>
                         </select>
-                            =${{item.quantity*item.price}}
+                            = ${{item.quantity*item.product.price}}
                         </div>
                     </div>
                 </div>
