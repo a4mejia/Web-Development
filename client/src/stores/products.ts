@@ -1,9 +1,11 @@
-import data from '../data/products.json';
+//import data from '../data/products.json';
+import myFetch from "@/Services/myFetch";
 export function getProducts(){
-    return data.products as Product[];
+    return myFetch <ProductDocument>('product')
+        .then(x=>x.products);
 }
 export function getProduct(id:number){
-    return getProducts().find((product) => product.id === id);
+    return myFetch<Product>
 }
 export function deleteProduct(id:number){
     data.products = data.products.filter((product)=> product.id !== id);
