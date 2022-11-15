@@ -1,5 +1,6 @@
+//@ts-check
 const express = require('express');
-const {get, add, remove} = require('../models/cart');
+const {get, add, update} = require('../models/cart');
 
 const app = express.Router();
 
@@ -8,10 +9,10 @@ app.get('/:userId',(req,res)=>{
 });
 
 app.post('/:userId/:productId/:quantity',(req,res)=>{
-    res.send(add(req.params.productId, res.params.userId, req.params.quantity));
+    res.send(add(req.params.userId,+req.params.productId,+req.params.quantity));
 });
-app.delete('/:userId/:productId',(req, res)=>{
-    res.send(remove(req.params.userId, req.params.productId));
+app.patch('/:userId/:productId/:quantity',(req, res)=>{
+    res.send(update(req.params.userId, +req.params.productId, +req.params.quantity));
 });
 
 module.exports = app;

@@ -1,5 +1,7 @@
-import { reactive } from "vue";
+import myFetch from "@/Services/myFetch";
+import { reactive, watch} from "vue";
 import type {Product} from './products';
+import session from "./session";
 
 export interface CartItem{
     quantity: number;
@@ -7,6 +9,12 @@ export interface CartItem{
 }
 
 const cart = reactive( [] as CartItem[]);
+export function load(){
+    myFetch(`cart/$(session.user?.email)`).then((data)=>{
+        cart.splice(0, cart.length, ...data as CartItem[]);
+    });
+}
+watch(()=> session.user, load);
 
 export function addProductToCart (product:Product, quantity:number=1){
     const cartItem = cart.find((item)=>item.product.id === product.id);
