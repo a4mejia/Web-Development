@@ -30,11 +30,14 @@ export function addProductToCart (product:Product, quantity:number=1){
 }
 
 export function updateProductQuantity(id:number, quantity:number){
+    myFetch('cart/${session.user?.email}/${id}/${quantity}', {}, PATCH)/then((data)=>{
+        cart.splice(0, cart.length, ...data as cartItem);
+
+    })
     const cartItem=cart.find((item)=> item.product.id===id);
     if(cartItem){
         cartItem.quantity=quantity;
         if (cartItem.quantity <=0){
-            cart.splice(cart.indexOf(cartItem),1);
         }
     }
 }

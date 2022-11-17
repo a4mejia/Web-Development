@@ -37,12 +37,12 @@ const update =(userId,productId, quantity)=>{
     const index= list.findIndex((cartItem)=>cartItem.userId===userId && cartItem.productId===productId);
     if(index !== -1){
         if (quantity === 0){
-            list.splice(index, 0)
+            list.splice(index, 1)
+            return "null";
         }
         else{
-            list[index].quantity
+            list[index].quantity = quantity;
         }
-        list.splice(index,1);
     }
     else{
         throw new Error('Cart Item Not Found');
@@ -50,4 +50,4 @@ const update =(userId,productId, quantity)=>{
     return index;
 
 }
-module.exports = { add, get, update};
+module.exports = { add, get, update}
