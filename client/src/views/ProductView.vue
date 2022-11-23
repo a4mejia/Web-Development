@@ -32,7 +32,9 @@ function addToCart(product: Product){
               <div class="product-info">
                   <b>{{product.title}}</b>
                   <p>{{product.description}}</p>
-                  <button class="button is-small is-primary is-rounded add" @click.prevent="addToCart(product)">+</button>
+                  <button class="button is-small is-primary is-rounded add"
+                      :class="{ 'is-loading': isLoading}"
+                      @click.prevent="addToCart(product)">+</button>
                   <p class="price">
                     <span class="currency">$</span>
                     <span class="amount">{{product.price}}</span>

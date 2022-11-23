@@ -1,7 +1,8 @@
 import myFetch from "@/Services/myFetch";
 import { reactive, watch} from "vue";
 import type {Product} from './products';
-import session from "./session";
+import { api } from "./session";
+import session {api} from "./session";
 
 export interface CartItem{
     quantity: number;
