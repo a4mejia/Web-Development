@@ -3,17 +3,22 @@ const products = require('../models/products')
 
 const app = express.Router();
 app
-    .get('/', (req,res)=>{
-        res.status(200).send(products.getProducts());
+    .get('/', (req,res, next)=>{
+        products.getProducts()
+        .then(x=> res.status(200).send(x))
+        .catch.next()
     })
-    .get('/:id', (req,res)=>{
-        const product = products.getProducts(+req.params.id);
-        if (product){
-            res.status(200).send(product);
-        }
-        else {
-            res.status(404).send('Product not found')
-        }
-    })
+    .get('/:id', (req,res, next)=>{
+        products.getProduct()
+        .then(x=> {
+           if (product){
+                res.status(200).send(product);
+            }
+            else {
+                res.status(404).send('Product not found')
+            } 
+        })
+        .catch.next();        
+    });
 
 module.exports=app;

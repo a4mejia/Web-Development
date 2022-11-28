@@ -1,12 +1,24 @@
 const data = require('../data/prducts.json');
-function getProducts(){
-    return data.products;
+const {connect}= require('./mongo')
+async function collection(){
+    const client = await connect()
+    return client.db("chopiphy").collection("products");
+     
 }
-function getProduct(id){
-    return data.products.find(p=>p.id ===id);
+async function getProducts(){
+    const db = await collection();
+    const data = await db.find().toArray()
+    return data;
+}
+async function getProduct(id){
+    const db = await collection();
+    const data = await db.findOne({_id: id})
+    return data;
+  
 }
 
 module.exports={
     getProducts,
+    collection,
     getProduct
-}
+};
