@@ -36,7 +36,8 @@ const subtotal = computed(()=> cart.reduce((total, item)=> total + item.quantity
                 <p>Your cart is empty</p>
             </div>
             <div v-else>
-                <div v-for="item in cart" :key="item.product.id" class="box" >
+                <div v-for="item in cart" :key="item.product.id"
+                        class="product" :class="" >
                     <figure class="image is 96x96">
                         <img :src="item.product.thumbnail" :alt="item.product.title">
                     </figure>

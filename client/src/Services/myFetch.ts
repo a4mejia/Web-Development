@@ -7,7 +7,7 @@ export default function myFetch(url: string, data: any = null,method?: string){
         headers:(
             'Content-Type':'application/json';
         )
-        body: 
+        body: data ? 
     }
     return fetch(API_ROOT + url).then(x =>x.json()); //only returns a promise
 }

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import session, {isLoading} from '@/stores/session';
+function deleteMessage(id: number){
+    session.messages
+}
 </script>
 <template>
     <div class="box">

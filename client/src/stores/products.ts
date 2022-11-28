@@ -1,5 +1,12 @@
 //import data from '../data/products.json';
 import myFetch from "@/Services/myFetch";
+import { reactive } from "vue";
+const session = reactive([
+    user: null as User | null,
+    loading: 0,
+    error: null as string |null,
+    messages
+]);
 export function getProducts(){
     return myFetch <ProductDocument>('product')
         .then(x=>x.products);
