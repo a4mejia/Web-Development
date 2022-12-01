@@ -4,7 +4,7 @@ export const API_ROOT ='http://dummyjson.com/';
 export default function myFetch(url: string, data: any = null,method?: string){
     const options : RequestInit ={
         method: method ?? (data ? 'POST' : 'GET'),
-        headers:(
+        headrs:(
             'Content-Type':'application/json';
         )
         body: data ? 
